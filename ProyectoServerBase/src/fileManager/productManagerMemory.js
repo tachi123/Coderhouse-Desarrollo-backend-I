@@ -5,21 +5,26 @@ class ProductManager {
     static productos = [];
 
     //Almacenar producto en el archivo
-    static async crearProducto(product){
+    static crearProducto(product){
         ProductManager.productos.push(product);
     }
 
-    static async leerProductos(){
+    static leerProductos(){
         return ProductManager.productos;
     }
 
-    static async actualizarProducto(){
+    static leerProducto(id){
+       //busco el producto
+       //retorno el producto buscado
+    }
+
+    static actualizarProducto(){
         //buscan en el array
         //lo actualizan
         //retornan el producto
     }
 
-    static async borrarProducto(){
+    static borrarProducto(){
         //buscan en el array
         //lo borran en el array
         //retornan
