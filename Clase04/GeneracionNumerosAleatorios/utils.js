@@ -29,4 +29,5 @@ const contarFrecuencia = numeros => {
         resolve(frecuencia);
     });
 }
+
 module.exports = {generarNumerosAleatorios, contarFrecuencia};

@@ -1,5 +1,9 @@
 import {Router} from 'express';
+import {ProductManager} from '../fileManager/productManagerMemory.js';
+
 const router = Router();
+
+let productos = ProductManager.leerProductos();
 
 //YA VA A ESTAR DENTRO DEL PATH /api/products - PORQUE ASÍ LO DEFINIMOS EN EL ARCHIVO APP.JS
 
