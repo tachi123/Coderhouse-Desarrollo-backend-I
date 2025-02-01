@@ -1,0 +1,18 @@
+//Aumentar la edad en 2 años de aquellos estudiantes que cursen matemática
+db.estudiantes.updateMany(
+    { curso: "Matemáticas"},
+    { $inc: { edad: 2}}
+)
+
+//Cambiar el curso de Pedro a química
+db.estudiantes.updateOne( 
+    {nombre: "Pedro"},
+    { $set: {curso: "Química"}}
+)
+
+db.estudiantes.deleteOne( {
+    _id: ObjectId("asdfasdfasdf")
+})
+
+//Eliminar todos los estudiantes que tengan una edad menor a 18
+db.estudiantes.deleteMany( {edad : { $lt: 18 }})

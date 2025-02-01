@@ -1,0 +1,13 @@
+[
+    {
+        "id": 1,
+        "dni": 1231254,
+        "apellido": "Nahuel",
+        "pedidos": "id pedidios"
+    },
+    {
+        "id": 2,
+        "cuil": 1231254,
+        "email": "asdfasdf@example.org"
+    }
+]

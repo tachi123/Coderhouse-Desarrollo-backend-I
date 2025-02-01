@@ -1,0 +1,21 @@
+//1. Agregar nuevos estudiantes
+
+db.estudiantes.insertMany([
+  { nombre: "Juan", apellido: "Díaz", curso: "Música", instrumento: "Guitarra" },
+  { nombre: "Laura", apellido: "Fernández", curso: "Arte", técnica: "Pintura" },
+  { nombre: "Diego", apellido: "López", curso: "Deportes", deporte: "Fútbol" },
+  { nombre: "Ana", apellido: "González", curso: "Informática", lenguaje: "Python" },
+  { nombre: "Sofía", apellido: "Pérez", curso: "Literatura", autorFavorito: "Cervantes" }
+])
+
+db.estudiantes.insertOne( {nombre: "Marcos"})
+
+//Proyecciones
+//Obtener solo el nombre y el curso de todos los estudiantes - SE MUESTRAN SOLO LOS CAMPOS EXISTENTES
+db.estudiantes.find( {} , {nombre: 1, curso : 1})
+//Obtener todos los datos de los estudiatnes, excepto el curso
+db.estudiantes.find({}, {curso: 0})
+//Odernar los estudiantes por nombre alfabético
+db.estudiantes.find().sort({nombre: 1, apellido: 1})
+//Me voy a traer los 3 estudiantes mas grandes
+db.estudiantes.find().sort( {edad: -1}).limit(3)
