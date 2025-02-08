@@ -1,0 +1,37 @@
+//#FindTheBug
+
+//Consulta 1: Insertar múltiples mascotas
+db.pets.insertOne([{name:"aletas",specie:"fish"},{name:"Doby",{specie:"dog"}])
+
+// Error:
+// *insertOne se usa para insertar un solo documento, mientras que aquí se intenta insertar un array de documentos.
+// *Falta un paréntesis de cierre al final.
+// *En el segundo objeto del array hay una coma extra antes del segundo {, lo que lo hace una sintaxis incorrecta.
+//CORRECCION
+db.pets.insertOne({ name: "aletas", specie: "fish" });
+
+// Consulta 2: Obtener solo las últimas 5 mascotas que sean peces
+db.pets.find({specie:"fish}).limit(5)
+
+// Error:
+// *Falta el cierre de comillas para el valor "fish".
+// *No está claro qué se entiende por "últimas 5 mascotas"; MongoDB no almacena automáticamente un orden, así que necesitarías un campo por el cual ordenar, como una fecha de inserción
+// CORRECCION: Primero, agrega el cierre de comillas. Luego, si quieres obtener las "últimas" 5, necesitarás ordenar por un campo, por ejemplo, una fecha (createdAt):
+db.pets.find({ specie: "fish" }).sort({ createdAt: -1 }).limit(5);
+
+// Consulta 3: Obtener solo el nombre de las últimas 5 mascotas cuya edad sea menor de 10 años
+db.pets.find(age:{ $gte:{10}}},{name:1}).sort(age:1).limit(5)
+Error:
+// *Falta una apertura de llave { después de find.
+// *El operador $gte está incorrecto para el propósito. Debe ser $lt si se busca "menor de 10 años".
+// *Los operadores $lt, $gte, etc., deben ir en formato { campo: { operador: valor } }.
+// *La propiedad age no está entre comillas.
+// *Falta un cierre de paréntesis al final.
+// CORECCION:
+db.pets.find({ age: { $lt: 10 } }, { name: 1 }).sort({ age: 1 }).limit(5);
+
+// Resumen de errores
+// Sintaxis: Comas, paréntesis y llaves deben estar correctamente balanceados.
+// Uso de métodos: insertOne es para un solo documento, insertMany es para múltiples.
+// Faltas de comillas: Los valores de cadenas deben estar entre comillas.
+// Operadores: Los operadores como $gte, $lt deben ser correctamente aplicados según la lógica que se desea implementar.
