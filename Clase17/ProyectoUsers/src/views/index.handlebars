@@ -1,0 +1,16 @@
+<h1>Listado de usuarios por página</h1>
+
+{{#if info.hasPrevPage}}
+    <p>Link a página previa: {{info.prevPage}}</p>
+{{/if}}
+<p>Info actual: {{info.page}}</p>
+{{#if info.hasNextPage}}
+    <p>Link a página previa: {{info.nextPage}}</p>
+{{/if}}
+
+<h2>Listado de {{info.totalDocs}}  usuarios vamos viendo de {{info.limit}} usuarios por página</h2>
+{{#each users}}
+    <div>
+        <p>{{this.last_name}}, {{this.first_name}}</p>
+    </div>
+{{/each}}
